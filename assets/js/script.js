@@ -2,6 +2,8 @@ const mainEl = document.querySelector('main');
 const startBtnEl = document.querySelector('#start-btn');
 const answerBtnEl = document.querySelector('.answer-btn')
 
+let timeCount = 75
+
 const question = {
     heading: "This is a question?",
     options: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
@@ -41,8 +43,21 @@ const generateAnswers = (container) => {
         answer.addEventListener('click', checkAnswer);
 
         container.appendChild(answer);
+        
     };
 };
+
+const postTime = () => {
+    const timerSpanEl = document.getElementById("time");
+    timerSpanEl.innerHTML = `Timer: ${timeCount}`
+
+    if (parseInt(timeCount) === 0) {
+        console.log(timeCount);
+        return clearInterval(timer)
+    }
+
+    timeCount--;
+}
 
 const checkAnswer = (event) => {
     let answer = event.target;
@@ -60,3 +75,4 @@ const checkAnswer = (event) => {
 };
 
 startBtnEl.addEventListener('click', createQuestion);
+// let timer = setInterval(postTime, 1000);
