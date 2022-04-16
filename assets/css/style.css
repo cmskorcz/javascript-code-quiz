@@ -79,6 +79,14 @@ main p {
     flex-basis: 50%;
     justify-content: center;
 }
+
+.feedback-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 15px;
+}
 /* 425px */
 
 @media screen and (min-width: 425px) {

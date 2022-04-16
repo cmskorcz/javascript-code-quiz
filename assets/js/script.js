@@ -46,12 +46,17 @@ const generateAnswers = (container) => {
 
 const checkAnswer = (event) => {
     let answer = event.target;
+    const containerEl = document.querySelector('.container-flex')
+    const feedbackEl = document.createElement('div');
+    feedbackEl.className = "feedback-flex"
     
     if (answer.value === question.answer) {
-        console.log('correct');
+        feedbackEl.innerHTML = "<h3>Correct!</h3>";
     } else {
-        console.log('incorrect');
+        feedbackEl.innerHTML = "<h3>Incorrect!</h3>";
     };
+
+    containerEl.appendChild(feedbackEl);
 };
 
 startBtnEl.addEventListener('click', createQuestion);
