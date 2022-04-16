@@ -46,7 +46,12 @@ const generateAnswers = (container) => {
 
 const checkAnswer = (event) => {
     let answer = event.target;
-    console.log(answer);
-}
+    
+    if (answer.value === question.answer) {
+        console.log('correct');
+    } else {
+        console.log('incorrect');
+    };
+};
 
 startBtnEl.addEventListener('click', createQuestion);
