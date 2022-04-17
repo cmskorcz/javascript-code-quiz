@@ -2,7 +2,9 @@ const mainEl = document.querySelector('main');
 const startBtnEl = document.querySelector('#start-btn');
 const answerBtnEl = document.querySelector('.answer-btn')
 
-let timeCount = 75
+let timeCount = 5
+let intervalID;
+let scoreCount = 0
 
 const question = {
     heading: "This is a question?",
@@ -30,7 +32,15 @@ const createQuestion = () => {
 
     questionContainerEl.appendChild(answerContainerEl);
 
-    setInterval(postTime, 1000);
+   startTimer();
+};
+
+const startTimer = () => {
+    intervalID = setInterval(postTime, 1000);
+};
+
+const stopTimer = () => {
+    clearInterval(intervalID);
 };
 
 const generateAnswers = (container) => {
@@ -54,11 +64,11 @@ const postTime = () => {
     timerSpanEl.innerHTML = `Timer: ${timeCount}`
     
     if (parseInt(timeCount) <= 0) {
-        console.log(timeCount);
-        return clearInterval()
+        stopTimer();
+        return endQuiz();
     }
 
-    timeCount--;
+    return timeCount--;
 }
 
 const checkAnswer = (event) => {
@@ -69,6 +79,7 @@ const checkAnswer = (event) => {
     
     if (answer.value === question.answer) {
         feedbackEl.innerHTML = "<h3>Correct!</h3>";
+        scoreCount = scoreCount + 10;
     } else {
         feedbackEl.innerHTML = "<h3>Incorrect!</h3>";
         timeCount = timeCount - 5;
@@ -76,5 +87,16 @@ const checkAnswer = (event) => {
 
     containerEl.appendChild(feedbackEl);
 };
+
+const endQuiz = () => {
+    const questionContainerEl = document.querySelector('div[class="container-flex"]');
+    const scoreContainerEl = document.createElement('div');
+
+    scoreCount = scoreCount + timeCount;
+
+    scoreContainerEl.className = 'container-flex';
+    scoreContainerEl.innerHTML = `<h3>Score: ${scoreCount}`;
+    questionContainerEl.replaceWith(scoreContainerEl);
+}
 
 startBtnEl.addEventListener('click', createQuestion);
