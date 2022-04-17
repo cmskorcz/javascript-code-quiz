@@ -29,6 +29,8 @@ const createQuestion = () => {
     generateAnswers(answerContainerEl);
 
     questionContainerEl.appendChild(answerContainerEl);
+
+    setInterval(postTime, 1000);
 };
 
 const generateAnswers = (container) => {
@@ -50,10 +52,10 @@ const generateAnswers = (container) => {
 const postTime = () => {
     const timerSpanEl = document.getElementById("time");
     timerSpanEl.innerHTML = `Timer: ${timeCount}`
-
-    if (parseInt(timeCount) === 0) {
+    
+    if (parseInt(timeCount) <= 0) {
         console.log(timeCount);
-        return clearInterval(timer)
+        return clearInterval()
     }
 
     timeCount--;
@@ -69,10 +71,10 @@ const checkAnswer = (event) => {
         feedbackEl.innerHTML = "<h3>Correct!</h3>";
     } else {
         feedbackEl.innerHTML = "<h3>Incorrect!</h3>";
+        timeCount = timeCount - 5;
     };
 
     containerEl.appendChild(feedbackEl);
 };
 
 startBtnEl.addEventListener('click', createQuestion);
-// let timer = setInterval(postTime, 1000);
