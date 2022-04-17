@@ -1,16 +1,18 @@
+// Grab Elements off of initial screen
 const mainEl = document.querySelector('main');
 const startBtnEl = document.querySelector('#start-btn');
 const answerBtnEl = document.querySelector('.answer-btn')
 
-let timeCount = 5
+// Initialize timer, intervalID, and score
+let timeCount = 75
 let intervalID;
 let scoreCount = 0
 
+// Question Array
 const question = {
     heading: "This is a question?",
     options: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
     answer: "Answer 3"
-    
 }
 
 
@@ -32,7 +34,7 @@ const createQuestion = () => {
 
     questionContainerEl.appendChild(answerContainerEl);
 
-   startTimer();
+    startTimer();
 };
 
 const startTimer = () => {
