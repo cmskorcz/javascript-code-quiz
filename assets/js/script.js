@@ -24,6 +24,7 @@ const question = [
 // Initialize question idex counter
 let questionIndex;
 
+// Creates first question on the page
 const createQuestion = () => {
     questionIndex = 0;
 
@@ -47,21 +48,30 @@ const createQuestion = () => {
     startTimer();
 };
 
+// Replaces previous question values with next question values and content
 const nextQuestion = (index) => {
-    const questionHeadingEl = document.querySelector('h2');
+    if (index < question.length) {
+        const questionHeadingEl = document.querySelector('h2');
 
-    questionHeadingEl.textContent = question[index].heading;
-    replaceAnswers(question[index]);
+        questionHeadingEl.textContent = question[index].heading;
+        replaceAnswers(question[index]);    
+    } else {
+        stopTimer();
+        return endQuiz();
+    }
 };
 
+// Starts quiz timer
 const startTimer = () => {
     intervalID = setInterval(postTime, 1000);
 };
 
+// Ends quiz timer
 const stopTimer = () => {
     clearInterval(intervalID);
 };
 
+// Populates answer buttons within the first question
 const generateAnswers = (container, index) => {
     let answerArray = question[index].options
     for (let i = 0; i < answerArray.length; i++) {
@@ -78,6 +88,7 @@ const generateAnswers = (container, index) => {
     };
 };
 
+// Replaces answer values and content within nextQuestion()
 const replaceAnswers = (index) => {
     let answerArray = index.options
     for (let i = 0; i < answerArray.length; i++) {
@@ -88,6 +99,7 @@ const replaceAnswers = (index) => {
     }
 }
 
+// Updates timer on page
 const postTime = () => {
     const timerSpanEl = document.getElementById("time");
     timerSpanEl.innerHTML = `Timer: ${timeCount}`
@@ -100,6 +112,7 @@ const postTime = () => {
     return timeCount--;
 }
 
+// Checks the value of the option selected with the actual question answer
 const checkAnswer = (event) => {
     let answer = event.target;
 
@@ -114,7 +127,6 @@ const checkAnswer = (event) => {
 
     if (answer.value === question[questionIndex].answer) {
         feedbackEl.innerHTML = "<h3>Correct!</h3>";
-        scoreCount = scoreCount + 10;
         questionIndex++;
     } else {
         feedbackEl.innerHTML = "<h3>Incorrect!</h3>";
@@ -125,11 +137,12 @@ const checkAnswer = (event) => {
     nextQuestion(questionIndex);
 };
 
+// Ends the quiz and displays score
 const endQuiz = () => {
     const questionContainerEl = document.querySelector('div[class="container-flex"]');
     const scoreContainerEl = document.createElement('div');
 
-    scoreCount = scoreCount + timeCount;
+    scoreCount = timeCount;
 
     scoreContainerEl.className = 'container-flex';
     scoreContainerEl.innerHTML = `<h3>Score: ${scoreCount}`;
