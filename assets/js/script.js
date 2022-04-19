@@ -170,20 +170,28 @@ const endQuiz = () => {
 }
 
 // Saves high score to localstorage
-const saveScore = () => {
+const saveScore = (event) => {
+    event.preventDefault();
+    let nameInputEl = document.querySelector('input');
     let storedScores = localStorage.getItem('scores');
+
+    let userName = nameInputEl.value
     
     // If no key of scores, create key with value of array containing score
     if (!storedScores) {
-        highScores = [scoreCount];
+        highScores = [`${userName}: ${scoreCount}`];
         localStorage.setItem('scores', JSON.stringify(highScores));
     
     // Else parse stored score, push new score, and reset stored value
     } else {
         let newHighScores = JSON.parse(storedScores);
-        newHighScores.push(scoreCount);
+        newHighScores.push(`${userName}: ${scoreCount}`);
         localStorage.setItem('scores', JSON.stringify(newHighScores));
     }
+
+    // Redirect to highscore page
+    location.replace('./highscores.html');
 }
+
 
 startBtnEl.addEventListener('click', createQuestion);
