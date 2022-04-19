@@ -7,6 +7,7 @@ const answerBtnEl = document.querySelector('.answer-btn')
 let timeCount = 75
 let intervalID;
 let scoreCount = 0;
+let highScores;
 
 // Question Array
 const question = [
@@ -143,10 +144,28 @@ const endQuiz = () => {
     const scoreContainerEl = document.createElement('div');
 
     scoreCount = timeCount;
+    saveScore(scoreCount);
 
     scoreContainerEl.className = 'container-flex';
     scoreContainerEl.innerHTML = `<h3>Score: ${scoreCount}`;
     questionContainerEl.replaceWith(scoreContainerEl);
+}
+
+// Saves high score to localstorage
+const saveScore = (score) => {
+    let storedScores = localStorage.getItem('scores');
+    
+    // If no key of scores, create key with value of array containing score
+    if (!storedScores) {
+        highScores = [score];
+        localStorage.setItem('scores', JSON.stringify(highScores));
+    
+    // Else parse stored score, push new score, and reset stored value
+    } else {
+        let newHighScores = JSON.parse(storedScores);
+        newHighScores.push(score);
+        localStorage.setItem('scores', JSON.stringify(newHighScores));
+    }
 }
 
 startBtnEl.addEventListener('click', createQuestion);
