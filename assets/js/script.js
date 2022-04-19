@@ -142,28 +142,46 @@ const checkAnswer = (event) => {
 const endQuiz = () => {
     const questionContainerEl = document.querySelector('div[class="container-flex"]');
     const scoreContainerEl = document.createElement('div');
+    const formEl = document.createElement('form');
+    const nameLabelEl = document.createElement('label');
+    const nameInputEl = document.createElement('input');
+    const scoreBtnEl = document.createElement('button')
+
+    nameLabelEl.textContent = "Enter Your Initials!";
+    nameLabelEl.setAttribute('for', 'name');
+    
+    nameInputEl.setAttribute('id', 'name');
+    
+    scoreBtnEl.textContent = 'Submit';
+    scoreBtnEl.className = 'btn';
+    scoreBtnEl.setAttribute('type', 'submit')
 
     scoreCount = timeCount;
-    saveScore(scoreCount);
-
+    
     scoreContainerEl.className = 'container-flex';
     scoreContainerEl.innerHTML = `<h3>Score: ${scoreCount}`;
     questionContainerEl.replaceWith(scoreContainerEl);
+    scoreContainerEl.appendChild(formEl);
+    formEl.appendChild(nameLabelEl);
+    formEl.appendChild(nameInputEl);
+    formEl.appendChild(scoreBtnEl);
+
+    formEl.addEventListener('submit', saveScore)
 }
 
 // Saves high score to localstorage
-const saveScore = (score) => {
+const saveScore = () => {
     let storedScores = localStorage.getItem('scores');
     
     // If no key of scores, create key with value of array containing score
     if (!storedScores) {
-        highScores = [score];
+        highScores = [scoreCount];
         localStorage.setItem('scores', JSON.stringify(highScores));
     
     // Else parse stored score, push new score, and reset stored value
     } else {
         let newHighScores = JSON.parse(storedScores);
-        newHighScores.push(score);
+        newHighScores.push(scoreCount);
         localStorage.setItem('scores', JSON.stringify(newHighScores));
     }
 }
