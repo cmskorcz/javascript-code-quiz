@@ -33,8 +33,10 @@ const createQuestion = () => {
     const questionHeadingEl = document.createElement('h2');
     const answerContainerEl = document.createElement('div');
 
-    questionContainerEl.className = "container-flex";
-    answerContainerEl.className = "answer-flex";
+    questionContainerEl.className = "flex";
+    questionContainerEl.id = "question-container"
+    answerContainerEl.className = "flex";
+    answerContainerEl.id = "answer-container"
 
     questionHeadingEl.textContent = question[questionIndex].heading;
 
@@ -117,12 +119,13 @@ const postTime = () => {
 const checkAnswer = (event) => {
     let answer = event.target;
 
-    const containerEl = document.querySelector('.container-flex')
-    let feedbackEl = document.querySelector('div[class="feedback-flex"]');
+    const containerEl = document.getElementById('question-container')
+    let feedbackEl = document.getElementById('feedback-container');
     
     if(!feedbackEl) {
         feedbackEl = document.createElement('div');
-        feedbackEl.className = "feedback-flex"
+        feedbackEl.className = "flex";
+        feedbackEl.id = "feedback-container";
         containerEl.appendChild(feedbackEl);
     };
 
@@ -140,12 +143,15 @@ const checkAnswer = (event) => {
 
 // Ends the quiz and displays score
 const endQuiz = () => {
-    const questionContainerEl = document.querySelector('div[class="container-flex"]');
+    const questionContainerEl = document.getElementById('question-container');
     const scoreContainerEl = document.createElement('div');
     const formEl = document.createElement('form');
     const nameLabelEl = document.createElement('label');
     const nameInputEl = document.createElement('input');
-    const scoreBtnEl = document.createElement('button')
+    const scoreBtnEl = document.createElement('button');
+
+    formEl.className = "flex"
+    formEl.id = "form-container"
 
     nameLabelEl.textContent = "Enter Your Initials!";
     nameLabelEl.setAttribute('for', 'name');
@@ -158,8 +164,9 @@ const endQuiz = () => {
 
     scoreCount = timeCount;
     
-    scoreContainerEl.className = 'container-flex';
-    scoreContainerEl.innerHTML = `<h3>Score: ${scoreCount}`;
+    scoreContainerEl.className = 'flex';
+    scoreContainerEl.id = "player-score"
+    scoreContainerEl.innerHTML = `<h2>Score: ${scoreCount}`;
     questionContainerEl.replaceWith(scoreContainerEl);
     scoreContainerEl.appendChild(formEl);
     formEl.appendChild(nameLabelEl);

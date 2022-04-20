@@ -1,53 +1,69 @@
+:root {
+    --margin-sm: 5px;
+    --margin-med: 10px;
+    --padding-sm: 5px;
+    --padding-med: 10px;
+    --main-color: #bd00bd;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* High Score Link and Timer */
 header {
-    display: flex;
     justify-content: space-between;
-    margin: 10px;
+    margin: var(--margin-med);
     height: 25vh;
 }
 
 header span {
-    padding: 10px;
+    padding: var(--padding-med);
 }
 
 #high-score {
-    color: #bd00bd;
+    color: var(--main-color);
     height: fit-content;
+    padding: var(--padding-med);
+    text-decoration: none;
 }
 
 #high-score:hover {
-    text-decoration: underline;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 /* Quiz Title, Description, and Start Button */
-main div{
-    display: flex;
-    flex-wrap: wrap;
+#description {
     justify-content: center;
 }
 
-main h1 {
+#description h1 {
     font-size: 26px;
 }
 
-main p {
+#description p {
     font-size: 16px;
-    margin: 10px;
-    padding: 5px;
+    margin: var(--margin-med);
+    padding: var(--padding-sm);
     text-align: center;
     line-height: 1.3;
 }
 
+#btn-container {
+    justify-content: center;
+}
+
 .btn {
     padding: 10px 25px;
-    margin-top: 10px;
+    margin-top: var(--margin-med);
     border-radius: 15px;
     font-size: 16px;
     background-color: #800080;
@@ -60,41 +76,56 @@ main p {
 }
 
 /* Question Styles */
-.container-flex {
-    display: flex;
-    flex-wrap: wrap;
+#question-container {
     justify-content: center;
 }
 
-.container-flex h2 {
+#question-container h2 {
     font-size: 24px;
     flex-basis: 60%;
     text-align: center;
     margin-bottom: 15px;
 }
 
-.answer-flex {
-    display: flex;
-    flex-wrap: wrap;
+#answer-container {
     flex-basis: 50%;
     justify-content: center;
 }
 
-.feedback-flex {
-    display: flex;
-    flex-wrap: wrap;
+#feedback-container {
     flex-basis: 100%;
     justify-content: center;
     margin-top: 15px;
 }
+
+/* Score Form */
+#form-container {
+    justify-content: space-evenly;
+    margin-top: 10px;
+    flex-basis: 100%;
+}
+
+#form-container label, #form-container input {
+    flex-basis: 40%;
+}
+
+#form-container button {
+    margin-top: 15px;
+    flex-basis: 40%;
+}
+
+#player-score {
+    justify-content: center;
+}
+
 /* 425px */
 
 @media screen and (min-width: 425px) {
-    main h1 {
+    #description h1 {
         font-size: 30px;
     }
 
-    header span, main p {
+    #highscore, #time, #description p, #form-container label, .btn {
         font-size: 18px;
     }
 }
@@ -102,15 +133,15 @@ main p {
 /* 550px */
 
 @media screen and (min-width: 550px) {
-    header span {
+    #highscore, #time {
         font-size: 20px;
     }
 
-    main h1 {
+    #description h1 {
         font-size: 32px;
     }
 
-    main p {
+    #description p {
         font-size: 20px;
         flex-basis: 75%;
     }
@@ -118,26 +149,26 @@ main p {
 
 /* 768px */
 @media screen and (min-width: 768px) {
-    main h1 {
+    #description h1 {
         font-size: 36px;
     }
 
-    header span, main p {
+    #highscore, #time, #description p {
         font-size: 24px;
     }
 
-    main button {
+    #btn-container button {
         font-size: 20px;
     }
 }
 
 /* 980px */
 @media screen and (min-width: 980px) {
-    main h1 {
+    #description h1 {
         font-size: 40px;
     }
 
-    header span, main p {
+    #highscore, #time, #description p {
         font-size: 28px;
     }
 }
