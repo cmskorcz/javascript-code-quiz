@@ -1,9 +1,28 @@
 :root {
     --margin-sm: 5px;
     --margin-med: 10px;
+    --margin-lg: 15px;
+
     --padding-sm: 5px;
     --padding-med: 10px;
+
     --main-color: #bd00bd;
+    --secondary-color: #800080;
+
+    --h1-sm: 26px;
+    --h1-med: 30px;
+    --h1-lg: 32px;
+    --h1-xlg: 36px;
+    --h1-xxlg: 40px;
+
+    --h2-sm: 24px;
+    --h2-med: 28px;
+
+    --fs-sm: 16px;
+    --fs-med: 18px;
+    --fs-lg: 20px;
+    --fs-xlg: 24px;
+    --fs-xxlg: 28px;
 }
 
 * {
@@ -46,11 +65,11 @@ header span {
 }
 
 #description h1 {
-    font-size: 26px;
+    font-size: var(--h1-sm);
 }
 
 #description p {
-    font-size: 16px;
+    font-size: var(--fs-sm);
     margin: var(--margin-med);
     padding: var(--padding-sm);
     text-align: center;
@@ -62,16 +81,16 @@ header span {
 }
 
 .btn {
-    padding: 10px 25px;
+    padding: var(--padding-med) 25px;
     margin-top: var(--margin-med);
     border-radius: 15px;
-    font-size: 16px;
-    background-color: #800080;
+    font-size: var(--fs-sm);
+    background-color: var(--secondary-color);
     color: white;
 }
 
 .btn:hover {
-    background-color: #bd00bd;
+    background-color: var(--main-color);
     cursor: pointer;
 }
 
@@ -81,10 +100,10 @@ header span {
 }
 
 #question-container h2 {
-    font-size: 24px;
+    font-size: var(--h2-sm);
     flex-basis: 60%;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: var(--margin-lg);
 }
 
 #answer-container {
@@ -95,12 +114,12 @@ header span {
 #feedback-container {
     flex-basis: 100%;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: var(--margin-lg);
 }
 
 /* Score Form */
 #form-container {
-    margin-top: 10px;
+    margin-top: var(--margin-med);
     flex-basis: 100%;
     align-items: center;
     justify-content: center;
@@ -121,22 +140,30 @@ header span {
     justify-content: center;
 }
 
-#hs-container  h1 {
+#hs-container h1 {
     flex-basis: 100%;
     text-align: center;
     margin-bottom: var(--margin-med);
+    font-size: var(--h1-sm);
 }
 
 #highscores {
     flex-basis: 60%;
     text-align: center;
     justify-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: var(--margin-sm);
 }
 
 #highscores li {
-    flex-basis: 60%;
+    flex-basis: 100%;
     list-style: none;
-    margin-bottom: var(--margin-sm);
+    padding: var(--margin-sm) 0 var(--margin-sm) 0;
+}
+
+#highscores li:nth-of-type(2n) {
+    background-color: rgba(189, 0, 189, 0.264);
 }
 
 #hs-btn-container {
@@ -147,7 +174,7 @@ header span {
 
 #clear-score, #go-back {
     text-decoration: none;
-    color: #800080;
+    color: var(--secondary-color);
 }
 
 #clear-score:hover, #go-back:hover {
@@ -159,15 +186,15 @@ header span {
 
 @media screen and (min-width: 425px) {
     #description h1 {
-        font-size: 30px;
+        font-size: var(--h1-med);
     }
 
     #question-container h2 {
-        font-size: 28px;
+        font-size: var(--h2-med);
     }
 
     #highscore, #time, #description p, #form-container label, .btn {
-        font-size: 18px;
+        font-size: var(--fs-med);
     }
 
     #answer-container .btn {
@@ -183,15 +210,15 @@ header span {
 
 @media screen and (min-width: 550px) {
     #high-score, #time {
-        font-size: 20px;
+        font-size: var(--fs-lg);
     }
 
     #description h1 {
-        font-size: 32px;
+        font-size: var(--h1-lg);
     }
 
     #description p {
-        font-size: 20px;
+        font-size: var(--fs-lg);
         flex-basis: 75%;
     }
 }
@@ -199,15 +226,15 @@ header span {
 /* 768px */
 @media screen and (min-width: 768px) {
     #description h1 {
-        font-size: 36px;
+        font-size: var(--h1-xlg);
     }
 
     #high-score, #time, #description p {
-        font-size: 24px;
+        font-size: var(--fs-xlg);
     }
 
     #btn-container button {
-        font-size: 20px;
+        font-size: var(--fs-lg);
     }
 
     #answer-container {
@@ -222,10 +249,10 @@ header span {
 /* 980px */
 @media screen and (min-width: 980px) {
     #description h1 {
-        font-size: 40px;
+        font-size: var(--h1-xxlg);
     }
 
     #highscore, #time, #description p {
-        font-size: 28px;
+        font-size: var(--fs-xxlg);
     }
 }
