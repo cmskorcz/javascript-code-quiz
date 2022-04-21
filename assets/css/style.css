@@ -100,22 +100,59 @@ header span {
 
 /* Score Form */
 #form-container {
-    justify-content: space-evenly;
     margin-top: 10px;
     flex-basis: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 #form-container label, #form-container input {
-    flex-basis: 40%;
-}
-
-#form-container button {
-    margin-top: 15px;
-    flex-basis: 40%;
+    margin-right: var(--margin-med);
 }
 
 #player-score {
     justify-content: center;
+}
+
+/* High Score Page */
+#hs-container {
+    margin-top: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+#hs-container  h1 {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: var(--margin-med);
+}
+
+#highscores {
+    flex-basis: 60%;
+    text-align: center;
+    justify-content: center;
+}
+
+#highscores li {
+    flex-basis: 60%;
+    list-style: none;
+    margin-bottom: var(--margin-sm);
+}
+
+#hs-btn-container {
+    flex-basis: 100%;
+    justify-content: space-evenly;
+    margin-top: var(--margin-sm);
+}
+
+#clear-score, #go-back {
+    text-decoration: none;
+    color: #800080;
+}
+
+#clear-score:hover, #go-back:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* 425px */
@@ -125,15 +162,27 @@ header span {
         font-size: 30px;
     }
 
+    #question-container h2 {
+        font-size: 28px;
+    }
+
     #highscore, #time, #description p, #form-container label, .btn {
         font-size: 18px;
+    }
+
+    #answer-container .btn {
+        flex-basis: 65%;
+    }
+
+    #form-container .btn {
+        margin-top: 0;
     }
 }
 
 /* 550px */
 
 @media screen and (min-width: 550px) {
-    #highscore, #time {
+    #high-score, #time {
         font-size: 20px;
     }
 
@@ -153,12 +202,20 @@ header span {
         font-size: 36px;
     }
 
-    #highscore, #time, #description p {
+    #high-score, #time, #description p {
         font-size: 24px;
     }
 
     #btn-container button {
         font-size: 20px;
+    }
+
+    #answer-container {
+        justify-content: flex-start;
+    }
+
+    #answer-container .btn {
+        flex-basis: 55%;
     }
 }
 
