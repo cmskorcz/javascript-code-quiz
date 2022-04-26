@@ -12,14 +12,44 @@ let highScores;
 // Question Array
 const question = [
     {
-        heading: "This is a question?",
-        options: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-        answer: "Answer 3"
+        heading: "JavaScript is the programming language of the _____.",
+        options: ["Desktop", "Mobile", "Web", "Server"],
+        answer: "Web"
     },
     {
-        heading: "This is also a question?",
-        options: ["Answer 5", "Answer 6", "Answer 7", "Answer 8"],
-        answer: "Answer 5"
+        heading: "Which symbol is used separate JavaScript statements?",
+        options: ["Comma (,)", "Colon (:)", "Hyphen (-)", "Semicolon (;)"],
+        answer: "Semicolon (;)"
+    },
+    {
+        heading: "JavaScript ignores?",
+        options: ["Newlines", "Tabs", "Spaces", "All of the Above"],
+        answer: "All of the Above"
+    },
+    {
+        heading: "Which JavaScript method is used to access an HTML element by id?",
+        options: ["getElementById()", "getElement(id)", "getElementById(id)", "elementById(id)"],
+        answer: "getElementById(id)"
+    },
+    {
+        heading: "Which property is used to define the HTML content to an HTML element with a specific id?",
+        options: ["innerText", "innerContent", "elementText", "innerHTML"],
+        answer: "innerHTML"
+    },
+    {
+        heading: "Which JavaScript method is used to write on browser's console?",
+        options: ["console.write()", "console.output()", "console.log()", "console.writeHTML()"],
+        answer: "console.log()"
+    },
+    {
+        heading: "Which JavaScript method is used to write into an alert box?",
+        options: ["window.alertHTML()", "window.alert()", "window.alertBox()", "window.alertContent()"],
+        answer: "window.alert()"
+    },
+    {
+        heading: "In JavaScript, single line comment begins with ___.",
+        options: ["#", "/*", "$", "//"],
+        answer: "//"
     }
 ]
 // Initialize question idex counter
