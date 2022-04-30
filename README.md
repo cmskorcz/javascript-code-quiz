@@ -1,5 +1,10 @@
 # JavaScript Code Quiz
 
+## Deployed Site
+![screenshot of site](./assets/images/screenshot.png)
+
+[JavaScript Quiz](https://cmskorcz.github.io/javascript-code-quiz/)
+
 ## Description
 A JavaScript coding quiz consisting of 10 multiple-choice questions. A user has 75 seconds to answer these questions. If an answer is correct, the user continues on to the next question. If answered incorrectly, 10 seconds is taken off of the user's time, and the user will continue on to the next question.
 
